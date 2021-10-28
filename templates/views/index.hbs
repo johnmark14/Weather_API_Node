@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        {{>header}}
+        
+        <div class="section search">
+            <input type="text" name="search" id="search" placeholder="Location">
+            <a id="btn" href="/">Search</a>
+        </div>
+
+        <div class="section main">
+            <div class="weather-location">
+                <p id="address">{{ address }}</p>
+            </div>
+            <div class="weather-info">
+                <p id="day">{{ day }},</p>
+                <p id="month">{{ month }} {{ petsa }}</p>
+                <p><img src="{{weather_icons}}" alt="{{ weather_descriptions}}" id="icon"><font id="temperature">{{temperature}}</font> <span></span>C</p>
+            </div>
+            <div class="weather-description">
+                <p id="description">"{{ weather_descriptions }}"</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const search = document.querySelector('input')
+        const btn = document.querySelector('#btn')
+
+        btn.addEventListener('click', (e)=> {
+            e.preventDefault();
+
+            const location = search.value
+
+            fetch('http://localhost:3000/weather?address=' + location).then((response) => {
+                response.json().then((data) => {
+                    if(data.error) {
+                        console.log(error)
+                    } else {
+                        const address = document.getElementById('address')
+                        const day = document.getElementById('day')
+                        const month = document.getElementById('month')
+                        const temperature = document.getElementById('temperature')
+                        const icon = document.getElementById('icon')
+                        const desc = document.getElementById('description')
+                        
+                        address.innerHTML = data.address
+                        day.innerHTML = data.day
+                        month.innerHTML = `${data.month} ${data.petsa}`
+                        temperature.innerHTML = data.temperature
+                        icon.src = data.weather_icons
+                        desc.innerHTML = data.weather_descriptions
+                        console.log(data.weather_icons)
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

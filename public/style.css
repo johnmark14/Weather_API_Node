@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #2e3440;
+    height: 100vh;
+    background-image: linear-gradient(#eceff4, #d8dee9);
+    padding-top: 30px;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: #2e3440;
+    font-weight: 500;
+}
+
+.container {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.navigation {
+    border-bottom: 1px solid #2e3440;
+    width: 45%;
+    margin: 0 auto;
+}
+
+.navigation a:hover {
+    text-decoration: underline;
+}
+
+.navigation a:not(:last-child) {
+    margin-right: 15px;
+}
+
+.section {
+    padding-top: 30px;
+}
+
+.section.search input{
+    padding: 5px 2px;
+    outline: none;
+    margin-right: 10px;
+    text-transform: capitalize;
+    color: #3b4252;
+    font-weight: 600;
+}
+
+.section.search a {
+    background-color: #2e3440;
+    color: #eceff4;
+    text-transform: lowercase;
+    padding: 3px 10px;
+    box-sizing: border-box;
+    transition: background-color .3s ease;
+}
+
+.section.search a:hover {
+    background-color: #4c566a;
+}
+
+.section.main .weather-location {
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.section.main .weather-location p:not(:last-child) {
+    margin-right: 5px;
+}
+
+.section.main .weather-info {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.section.main .weather-info p {
+    font-size: 60px;
+    font-weight: 500;
+    letter-spacing: -2px;
+    position: relative;
+}
+
+.section.main .weather-info p:not(:last-child) {
+    margin-right: 20px;
+}
+
+.section.main .weather-info p img {
+    width: 45px;
+    margin-right: 10px;
+}
+
+.section.main .weather-info p span {
+    width: 15px;
+    height: 15px;
+    border: 3px solid #2e3440;
+    display: inline-block;
+    border-radius: 50%;
+    position: absolute;
+    top: 15px;
+    right: 38px;
+}
+
+.section.main .weather-description {
+    padding-top: 15px;
+}
+.section.main .weather-description p{
+    font-size: 16px;
+    font-style: italic;
+    text-transform: capitalize;
+}
